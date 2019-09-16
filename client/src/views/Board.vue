@@ -1,7 +1,13 @@
 <template>
   <div class="board container-fluid">
     <h1>{{board.title}}</h1>
-    <button class="btn-primary">Add List</button>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="New List Title" v-model="query" />
+      <div class="input-group-append">
+        <button class="btn btn-primary" @click="addList()">Add List</button>
+      </div>
+    </div>
+
     <div class="row">
       <List v-for="list in lists" :key="list._id" :listProp="list" />
     </div>
@@ -12,6 +18,11 @@
 import List from "../components/List";
 export default {
   name: "board",
+  data() {
+    return {
+      query: ""
+    };
+  },
   mounted() {
     this.getLists();
   },
@@ -31,6 +42,12 @@ export default {
   methods: {
     getLists() {
       this.$store.dispatch("getLists", this.boardId);
+    },
+    addList() {
+      this.$store.dispatch("addList", {
+        title: this.query,
+        boardId: this.boardId
+      });
     }
   },
   props: ["boardId"],

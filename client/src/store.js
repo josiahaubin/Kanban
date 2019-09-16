@@ -102,6 +102,14 @@ export default new Vuex.Store({
       } catch (error) {
 
       }
+    },
+    async addList({ commit, dispatch }, payload) {
+      try {
+        let res = await api.post('lists', payload)
+        dispatch('getLists', payload.boardId)
+      } catch (error) {
+
+      }
     }
 
 
