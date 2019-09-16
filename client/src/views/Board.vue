@@ -1,6 +1,7 @@
 <template>
   <div class="board">
     <h1>{{board.title}}</h1>
+    <button class="btn-primary">Add List</button>
     <List v-for="list in lists" :key="list._id" :listProp="list" />
   </div>
 </template>
