@@ -21,4 +21,8 @@ _schema.pre('findOneAndRemove', function (next) {
     .catch(err => next(err))
 })
 
-export default mongoose.model('Board', _schema)
+export default class BoardService {
+  get repository() {
+    return mongoose.model('Board', _schema)
+  }
+}

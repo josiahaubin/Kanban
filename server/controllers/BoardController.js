@@ -1,6 +1,8 @@
-import _boardService from '../services/BoardService'
+import BoardService from '../services/BoardService'
 import express from 'express'
 import { Authorize } from '../middleware/authorize.js'
+
+let _boardService = new BoardService().repository
 
 //PUBLIC
 export default class BoardsController {
