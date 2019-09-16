@@ -1,8 +1,10 @@
 import BoardService from '../services/BoardService'
 import express from 'express'
 import { Authorize } from '../middleware/authorize.js'
+import ListService from '../services/ListService'
 
 let _boardService = new BoardService().repository
+let _ls = new ListService().repository
 
 //NOTE all routes tested and work
 
@@ -13,6 +15,7 @@ export default class BoardsController {
       .use(Authorize.authenticated)
       .get('', this.getAll)
       .get('/:id', this.getById)
+      .get('/:id/lists', this.getLists)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -35,6 +38,13 @@ export default class BoardsController {
   async getById(req, res, next) {
     try {
       let data = await _boardService.findOne({ _id: req.params.id, authorId: req.session.uid })
+      return res.send(data)
+    } catch (error) { next(error) }
+  }
+
+  async getLists(req, res, next) {
+    try {
+      let data = await _ls.find({ boardId: req.params.id })
       return res.send(data)
     } catch (error) { next(error) }
   }

@@ -56,6 +56,7 @@ export default class CommentController {
       if (!data) {
         throw new Error('invalidi id')
       }
+      res.send('Deleted Value')
     } catch (error) {
       next(error)
 

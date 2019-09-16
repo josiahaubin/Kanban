@@ -1,10 +1,17 @@
 <template>
-  <div class="board">{{board.title}}</div>
+  <div class="board">
+    <h1>{{board.title}}</h1>
+    <List v-for="list in lists" :key="list._id" :listProp="list" />
+  </div>
 </template>
 
 <script>
+import List from "../components/List";
 export default {
   name: "board",
+  mounted() {
+    this.getLists();
+  },
   computed: {
     board() {
       return (
@@ -13,8 +20,19 @@ export default {
           title: "Loading..."
         }
       );
+    },
+    lists() {
+      return this.$store.state.lists;
     }
   },
-  props: ["boardId"]
+  methods: {
+    getLists() {
+      this.$store.dispatch("getLists", this.boardId);
+    }
+  },
+  props: ["boardId"],
+  components: {
+    List
+  }
 };
 </script>
