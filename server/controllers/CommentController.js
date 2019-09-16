@@ -4,6 +4,8 @@ import CommentService from '../services/CommentService'
 
 let _cs = new CommentService().repository
 
+//NOTE this should be working
+
 export default class CommentController {
   constructor() {
     this.router = express.Router()
@@ -37,7 +39,7 @@ export default class CommentController {
   }
   async create(req, res, next) {
     try {
-      req.body.user = req.session.uid
+      req.body.authorId = req.session.uid
       let data = await _cs.create(req.body)
       res.send(data)
     } catch (error) {
@@ -50,7 +52,7 @@ export default class CommentController {
   // }
   async delete(req, res, next) {
     try {
-      let data = await _cs.findOneAndRemove({ _id: req.params.id, user: req.session.uid })
+      let data = await _cs.findOneAndRemove({ _id: req.params.id, authorId: req.session.uid })
       if (!data) {
         throw new Error('invalidi id')
       }

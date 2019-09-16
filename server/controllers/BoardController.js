@@ -4,6 +4,8 @@ import { Authorize } from '../middleware/authorize.js'
 
 let _boardService = new BoardService().repository
 
+//NOTE all routes tested and work
+
 //PUBLIC
 export default class BoardsController {
   constructor() {

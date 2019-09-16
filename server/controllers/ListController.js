@@ -6,6 +6,8 @@ import ListService from '../services/ListService'
 let _ts = new TaskService().repository
 let _ls = new ListService().repository
 
+//NOTE these routes should be working
+
 export default class ListController {
 
   constructor() {
@@ -46,7 +48,7 @@ export default class ListController {
   }
   async create(req, res, next) {
     try {
-      req.body.user = req.session.uid
+      req.body.authorId = req.session.uid
       let data = await _ls.create(req.body)
       res.send(data)
     } catch (error) { next(error) }
@@ -58,7 +60,7 @@ export default class ListController {
   // }
   async delete(req, res, next) {
     try {
-      let data = await _ls.findOneAndRemove({ _id: req.params.id, user: req.session.uid })
+      let data = await _ls.findOneAndRemove({ _id: req.params.id, authorId: req.session.uid })
       if (!data) {
         throw new Error('Invalid ID')
       }
