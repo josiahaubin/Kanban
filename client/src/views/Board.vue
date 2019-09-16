@@ -4,7 +4,10 @@
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="New List Title" v-model="query" />
       <div class="input-group-append">
-        <button class="btn btn-primary" @click="addList()">Add List</button>
+        <button class="btn btn-primary" @click="addList()">
+          Add List
+          <i class="fas fa-check"></i>
+        </button>
       </div>
     </div>
 

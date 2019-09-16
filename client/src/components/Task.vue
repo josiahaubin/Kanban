@@ -1,5 +1,7 @@
 <template>
-  <div class="task">{{taskProp.description}}</div>
+  <div class="task">
+    <p>{{taskProp.description}}</p>
+  </div>
 </template>
 
 

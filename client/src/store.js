@@ -110,6 +110,14 @@ export default new Vuex.Store({
       } catch (error) {
 
       }
+    },
+    async deleteList({ commit, dispatch }, payload) {
+      try {
+        let res = await api.delete('/lists/' + payload)
+        dispatch('getLists', payload)
+      } catch (error) {
+
+      }
     }
 
 

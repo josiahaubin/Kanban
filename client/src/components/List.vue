@@ -1,7 +1,16 @@
 <template>
   <div class="list col-4 mt-2 border rounded">
-    <h2>{{listProp.title}}</h2>
+    <h2>
+      {{listProp.title}}
+      <button class="btn btn-danger float-right mt-1" @click="deleteList()">
+        <i class="fas fa-trash"></i>
+      </button>
+    </h2>
     <Task v-for="task in tasks" :key="task._id" :taskProp="task" />
+    <button class="btn btn-success mb-1">
+      Add Task
+      <i class="fas fa-check"></i>
+    </button>
   </div>
 </template>
 
@@ -25,6 +34,9 @@ export default {
   methods: {
     getTasks() {
       this.$store.dispatch("getTasks", this.listProp._id);
+    },
+    deleteList() {
+      this.$store.dispatch("deleteList", this.listProp._id);
     }
   },
   components: { Task }
