@@ -43,7 +43,10 @@ export default {
       this.$store.dispatch("getTasks", this.listProp._id);
     },
     deleteList() {
-      this.$store.dispatch("deleteList", this.listProp._id);
+      this.$store.dispatch("deleteList", {
+        listId: this.listProp._id,
+        boardId: this.listProp.boardId
+      });
     },
     addTask() {
       this.$store.dispatch("addTask", {
