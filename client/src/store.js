@@ -83,6 +83,11 @@ export default new Vuex.Store({
           dispatch('getBoards')
         })
     },
+    async deleteBoard({ commit, dispatch }, payload) {
+      debugger
+      let res = await api.delete('boards/' + payload)
+      dispatch('getBoards')
+    },
     //#endregion
 
 
@@ -114,6 +119,7 @@ export default new Vuex.Store({
     async deleteList({ commit, dispatch }, payload) {
       try {
         let res = await api.delete('/lists/' + payload)
+        debugger
         dispatch('getLists', payload)
       } catch (error) {
 

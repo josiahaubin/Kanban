@@ -14,6 +14,7 @@ let _schema = new Schema({
 //CASCADE ON DELETE
 _schema.pre('findOneAndRemove', function (next) {
   //lets find all the lists and remove them
+
   Promise.all([
     _listRepo.deleteMany({ boardId: this._conditions._id })
   ])
