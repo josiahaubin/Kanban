@@ -43,7 +43,7 @@ export default class TaskController {
   async getComments(req, res, next) {
     try {
       let data = await _cs.find({ taskId: req.params.id })
-      res.send(data)
+      return res.send(data)
     } catch (error) {
       next(error)
     }
