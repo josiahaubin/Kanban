@@ -20,4 +20,7 @@ export default {
 
 
 <style scoped>
+li {
+  text-align: left;
+}
 </style>
