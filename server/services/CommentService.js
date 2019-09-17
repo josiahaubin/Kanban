@@ -5,8 +5,8 @@ const ObjectId = Schema.Types.ObjectId
 const _model = new Schema({
   content: { type: String },
   taskId: { type: ObjectId, ref: 'Task', required: true },
-  authorId: { type: ObjectId, ref: 'List', required: true }
-
+  authorId: { type: ObjectId, ref: 'User', required: true },
+  boardId: { type: ObjectId, ref: "Board", required: true }
 })
 
 export default class CommentService {

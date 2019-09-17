@@ -50,7 +50,8 @@ export default {
     addComment() {
       this.$store.dispatch("addComment", {
         content: this.query,
-        taskId: this.taskProp._id
+        taskId: this.taskProp._id,
+        boardId: this.taskProp.boardId
       });
       this.query = "";
     },
