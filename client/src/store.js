@@ -160,6 +160,14 @@ export default new Vuex.Store({
       } catch (error) {
 
       }
+    },
+    async deleteComment({ commit, dispatch }, payload) {
+      try {
+        let res = await api.delete('comments/' + payload.commentId)
+        dispatch('getComments', payload.taskId)
+      } catch (error) {
+
+      }
     }
 
 

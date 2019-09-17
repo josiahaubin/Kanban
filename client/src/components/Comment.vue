@@ -1,6 +1,11 @@
 <template>
   <div class="comment">
-    <li>{{commentProp.content}}</li>
+    <span>
+      <li>
+        {{commentProp.content}}
+        <span class="red" @click="deleteComment">X</span>
+      </li>
+    </span>
   </div>
 </template>
 
@@ -13,7 +18,14 @@ export default {
     return {};
   },
   computed: {},
-  methods: {},
+  methods: {
+    deleteComment() {
+      this.$store.dispatch("deleteComment", {
+        taskId: this.commentProp.taskId,
+        commentId: this.commentProp._id
+      });
+    }
+  },
   components: {}
 };
 </script>
@@ -22,5 +34,9 @@ export default {
 <style scoped>
 li {
   text-align: left;
+}
+.red {
+  color: red;
+  cursor: pointer;
 }
 </style>
