@@ -152,6 +152,14 @@ export default new Vuex.Store({
       } catch (error) {
 
       }
+    },
+    async deleteTask({ commit, dispatch }, payload) {
+      try {
+        let res = await api.delete("tasks/" + payload.taskId)
+        dispatch('getTasks', payload.listId)
+      } catch (error) {
+
+      }
     }
 
 

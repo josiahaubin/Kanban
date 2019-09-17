@@ -51,7 +51,7 @@ export default {
         listId: this.listProp._id,
         boardId: this.listProp.boardId
       });
-      query = "";
+      this.query = "";
     }
   },
   components: { Task }

@@ -51,7 +51,7 @@ export default {
         title: this.query,
         boardId: this.boardId
       });
-      let query = "";
+      this.query = "";
     }
   },
   props: ["boardId"],

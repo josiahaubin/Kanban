@@ -15,6 +15,10 @@
         </button>
       </div>
     </div>
+    <button v-if="showInput" class="btn btn-danger mb-2" @click="deleteTask()">
+      Delete Task
+      <i class="fas fa-trash"></i>
+    </button>
   </div>
 </template>
 
@@ -47,7 +51,13 @@ export default {
         content: this.query,
         taskId: this.taskProp._id
       });
-      query = "";
+      this.query = "";
+    },
+    deleteTask() {
+      this.$store.dispatch("deleteTask", {
+        taskId: this.taskProp._id,
+        listId: this.taskProp.listId
+      });
     }
   },
   components: { comment }
