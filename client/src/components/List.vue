@@ -7,10 +7,15 @@
       </button>
     </h2>
     <Task v-for="task in tasks" :key="task._id" :taskProp="task" />
-    <button class="btn btn-success mb-1">
-      Add Task
-      <i class="fas fa-check"></i>
-    </button>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="New Task Description" v-model="query" />
+      <div class="input-group-append">
+        <button class="btn btn-success mb-1" @click="addTask()">
+          Add Task
+          <i class="fas fa-check"></i>
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -21,14 +26,16 @@ export default {
   name: "list",
   props: ["listProp"],
   data() {
-    return {};
+    return {
+      query: ""
+    };
   },
   mounted() {
     this.getTasks();
   },
   computed: {
     tasks() {
-      return this.$store.state.tasks[this.listProp._id];
+      return this.$store.state.tasks[this.listProp._id] || [];
     }
   },
   methods: {
@@ -37,6 +44,13 @@ export default {
     },
     deleteList() {
       this.$store.dispatch("deleteList", this.listProp._id);
+    },
+    addTask() {
+      this.$store.dispatch("addTask", {
+        description: this.query,
+        listId: this.listProp._id,
+        boardId: this.listProp.boardId
+      });
     }
   },
   components: { Task }

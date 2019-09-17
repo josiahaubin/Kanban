@@ -1,5 +1,5 @@
 <template>
-  <div class="task">
+  <div class="task border rounded">
     <p>{{taskProp.description}}</p>
   </div>
 </template>

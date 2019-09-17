@@ -34,7 +34,7 @@ export default new Vuex.Store({
       state.lists = payload
     },
     setTasks(state, payload) {
-      state.tasks[payload.listId] = payload.data
+      Vue.set(state.tasks, payload.listId, payload.data)
     }
   },
   actions: {
@@ -121,6 +121,14 @@ export default new Vuex.Store({
         let res = await api.delete('/lists/' + payload)
         debugger
         dispatch('getLists', payload)
+      } catch (error) {
+
+      }
+    },
+    async addTask({ commit, dispatch }, payload) {
+      try {
+        let res = await api.post('tasks', payload)
+        dispatch('getTasks', payload.listId)
       } catch (error) {
 
       }

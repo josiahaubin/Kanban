@@ -12,15 +12,6 @@ const _model = new Schema({
   boardId: { type: ObjectId, ref: 'Board', required: true }
 })
 
-//CASCADE ON DELETE
-_model.pre('deleteMany', function (next) {
-  //lets find all the lists and remove them
-  Promise.all([
-    _commentService.deleteMany({ taskId: this._conditions._id }),
-  ])
-    .then(() => next())
-    .catch(err => next(err))
-})
 
 //CASCADE ON DELETE
 _model.pre('findOneAndRemove', function (next) {
