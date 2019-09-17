@@ -144,6 +144,14 @@ export default new Vuex.Store({
       } catch (error) {
 
       }
+    },
+    async addComment({ commit, dispatch }, payload) {
+      try {
+        let res = await api.post('comments', payload)
+        dispatch('getComments', payload.taskId)
+      } catch (error) {
+
+      }
     }
 
 

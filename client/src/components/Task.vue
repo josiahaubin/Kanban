@@ -1,9 +1,20 @@
 <template>
   <div class="task border rounded">
-    <p>{{taskProp.description}}</p>
-    <ul>
-      <comment v-for="comment in comments" :commentProp="comment" :key="comment._id" />
-    </ul>
+    <div class="cp" @click="showInput = !showInput">
+      <p>{{taskProp.description}}</p>
+      <ul>
+        <comment v-for="comment in comments" :commentProp="comment" :key="comment._id" />
+      </ul>
+    </div>
+    <div v-if="showInput" class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="New Comment" v-model="query" />
+      <div class="input-group-append">
+        <button class="btn btn-success mb-1" @click="addComment()">
+          Add Comment
+          <i class="fas fa-check"></i>
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -14,7 +25,10 @@ export default {
   name: "task",
   props: ["taskProp"],
   data() {
-    return {};
+    return {
+      showInput: false,
+      query: ""
+    };
   },
   mounted() {
     this.getComments();
@@ -27,6 +41,13 @@ export default {
   methods: {
     getComments() {
       this.$store.dispatch("getComments", this.taskProp._id);
+    },
+    addComment() {
+      this.$store.dispatch("addComment", {
+        content: this.query,
+        taskId: this.taskProp._id
+      });
+      query = "";
     }
   },
   components: { comment }
@@ -35,4 +56,7 @@ export default {
 
 
 <style scoped>
+.cp {
+  cursor: pointer;
+}
 </style>
