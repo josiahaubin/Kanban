@@ -2,10 +2,11 @@
   <div class="task border rounded">
     <div class="cp" @click="showInput = !showInput">
       <p>{{taskProp.description}}</p>
-      <ul>
-        <comment v-for="comment in comments" :commentProp="comment" :key="comment._id" />
-      </ul>
     </div>
+    <ul>
+      <comment v-for="comment in comments" :commentProp="comment" :key="comment._id" />
+    </ul>
+
     <div v-if="showInput" class="input-group mb-3">
       <input type="text" class="form-control" placeholder="New Comment" v-model="query" />
       <div class="input-group-append">
