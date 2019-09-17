@@ -51,7 +51,8 @@ export default {
       this.$store.dispatch("addComment", {
         content: this.query,
         taskId: this.taskProp._id,
-        boardId: this.taskProp.boardId
+        boardId: this.taskProp.boardId,
+        listId: this.taskProp.listId
       });
       this.query = "";
     },
