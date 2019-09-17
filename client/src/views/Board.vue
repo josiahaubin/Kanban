@@ -28,6 +28,7 @@ export default {
   },
   mounted() {
     this.getLists();
+    this.$store.dispatch("getBoards");
   },
   computed: {
     board() {
