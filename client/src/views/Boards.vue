@@ -44,7 +44,7 @@ export default {
     deleteBoard(data) {
       swal({
         title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this list!",
+        text: "Once deleted, you will not be able to recover this board!",
         icon: "warning",
         buttons: true,
         dangerMode: true
@@ -52,11 +52,11 @@ export default {
         if (willDelete) {
           this.$store.dispatch("deleteBoard", data);
 
-          swal("Poof! Your list has been deleted!", {
+          swal("Poof! Your board has been deleted!", {
             icon: "success"
           });
         } else {
-          swal("Your list has not been deleted!");
+          swal("Your board has not been deleted!");
         }
       });
     },
