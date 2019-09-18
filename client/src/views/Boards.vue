@@ -46,8 +46,25 @@ export default {
       this.newBoard = { title: "", description: "" };
     },
     deleteBoard(data) {
-      this.$store.dispatch("deleteBoard", data);
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this board!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(willDelete => {
+        if (willDelete) {
+          this.$store.dispatch("deleteBoard", data);
+
+          swal("Poof! Your board has been deleted!", {
+            icon: "success"
+          });
+        } else {
+          swal("Your board has not been deleted!");
+        }
+      });
     },
+
     logout() {
       this.$store.dispatch("logout");
     }
