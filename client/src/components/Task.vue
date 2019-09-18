@@ -21,10 +21,6 @@
             <i class="fas fa-check"></i>
           </button>
         </div>
-        <button v-if="showInput" class="btn btn-danger mb-2" @click="deleteTask()">
-          Delete Task
-          <i class="fas fa-trash"></i>
-        </button>
       </div>
       <hr v-if="showInput" />
       <button v-if="showInput" class="btn btn-danger mb-2" @click="deleteTask()">
