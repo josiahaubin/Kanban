@@ -46,9 +46,24 @@ export default {
       this.$store.dispatch("getTasks", this.listProp._id);
     },
     deleteList() {
-      this.$store.dispatch("deleteList", {
-        listId: this.listProp._id,
-        boardId: this.listProp.boardId
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this list!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(willDelete => {
+        if (willDelete) {
+          this.$store.dispatch("deleteList", {
+            listId: this.listProp._id,
+            boardId: this.listProp.boardId
+          });
+          swal("Poof! Your list has been deleted!", {
+            icon: "success"
+          });
+        } else {
+          swal("Your list has not been deleted!");
+        }
       });
     },
     addTask() {
