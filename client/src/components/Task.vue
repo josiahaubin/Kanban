@@ -1,30 +1,33 @@
 <template>
-  <div class="task border rounded">
-    <div class="cp" @click="showInput = !showInput">
-      <p>{{taskProp.description}}</p>
-    </div>
-    <ul>
-      <comment v-for="comment in comments" :commentProp="comment" :key="comment._id" />
-    </ul>
-
-    <div v-if="showInput" class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="New Comment" v-model="query" />
-      <div class="input-group-append">
-        <button class="btn btn-success mb-1" @click="addComment()">
-          Add Comment
-          <i class="fas fa-check"></i>
-        </button>
+  <drag :transferData="{ }">
+    <div class="task border rounded">
+      <div class="cp" @click="showInput = !showInput">
+        <p>{{taskProp.description}}</p>
       </div>
+      <ul>
+        <comment v-for="comment in comments" :commentProp="comment" :key="comment._id" />
+      </ul>
+
+      <div v-if="showInput" class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="New Comment" v-model="query" />
+        <div class="input-group-append">
+          <button class="btn btn-success mb-1" @click="addComment()">
+            Add Comment
+            <i class="fas fa-check"></i>
+          </button>
+        </div>
+      </div>
+      <button v-if="showInput" class="btn btn-danger mb-2" @click="deleteTask()">
+        Delete Task
+        <i class="fas fa-trash"></i>
+      </button>
     </div>
-    <button v-if="showInput" class="btn btn-danger mb-2" @click="deleteTask()">
-      Delete Task
-      <i class="fas fa-trash"></i>
-    </button>
-  </div>
+  </drag>
 </template>
 
 
 <script>
+import { Drag, Drop } from "vue-drag-drop";
 import comment from "../components/Comment";
 export default {
   name: "task",
@@ -63,7 +66,7 @@ export default {
       });
     }
   },
-  components: { comment }
+  components: { comment, Drag, Drop }
 };
 </script>
 
