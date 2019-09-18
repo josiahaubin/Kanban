@@ -12,6 +12,7 @@
     <div v-for="board in boards" :key="board._id">
       <router-link :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}</router-link>
       <i class="fas fa-times ml-2 red" @click="deleteBoard(board._id)"></i>
+      <p>{{board.description}}</p>
     </div>
   </div>
 </template>
