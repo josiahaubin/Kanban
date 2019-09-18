@@ -21,6 +21,13 @@
       Delete Task
       <i class="fas fa-trash"></i>
     </button>
+    <hr v-if="showInput" />
+    <p v-if="showInput">Move To:</p>
+    <select v-if="showInput" v-model="selected">
+      <option disabled>Select a List</option>
+      <option v-for="list in lists" :key="list._id" :value="list._id">{{list.title}}</option>
+    </select>
+    <button @click="changeList()">wat</button>
   </div>
 </template>
 
@@ -33,7 +40,8 @@ export default {
   data() {
     return {
       showInput: false,
-      query: ""
+      query: "",
+      selected: ""
     };
   },
   mounted() {
@@ -42,6 +50,9 @@ export default {
   computed: {
     comments() {
       return this.$store.state.comments[this.taskProp._id] || [];
+    },
+    lists() {
+      return this.$store.state.lists;
     }
   },
   methods: {
@@ -62,6 +73,15 @@ export default {
         taskId: this.taskProp._id,
         listId: this.taskProp.listId
       });
+    },
+    changeList() {
+      this.$store.dispatch("changeList", {
+        taskId: this.taskProp._id,
+        listId: this.selected,
+        boardId: this.taskProp.boardId,
+        oldListId: this.taskProp.listId
+      });
+      this.selected = "";
     }
   },
   components: { comment }

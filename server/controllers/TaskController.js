@@ -16,7 +16,7 @@ export default class TaskController {
       .get('/:id', this.getByTaskId)
       .get('/:id/comments', this.getComments)
       .post('', this.create)
-      // .put('/:id', this.edit)
+      .put('/:id', this.edit)
       .delete('/:id', this.delete)
       .use(this.defaultRoute)
   }
@@ -58,9 +58,18 @@ export default class TaskController {
 
     }
   }
-  // edit(req, res, next) {
-  //   throw new Error("Method not implemented.");
-  // }
+  async edit(req, res, next) {
+    try {
+      let data = await _ts.findOneAndUpdate({ _id: req.params.id, authorId: req.session.uid }, req.body, { new: true })
+      console.log(data)
+      if (data) {
+        return res.send(data)
+      }
+      throw new Error("Invalid ID")
+    } catch (error) {
+
+    }
+  }
   async delete(req, res, next) {
     try {
       let data = await _ts.findOneAndRemove({ _id: req.params.id, authorId: req.session.uid })
