@@ -4,7 +4,7 @@
       <div class="col-12 justify-content-center">
         <h1>{{board.title}}</h1>
         <div class="input-group mb-3 justify-content-center">
-          <input type="text" class="listBar" placeholder="New List Title" v-model="query" />
+          <input type="text" class="listBar rounded" placeholder="New List Title" v-model="query" />
           <div class="input-group-append">
             <button class="btn btn-primary" @click="addList()">
               Add List
