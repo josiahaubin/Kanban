@@ -16,7 +16,8 @@ let api = Axios.create({
 })
 
 let imgApi = Axios.create({
-  baseURL: "https://api.unsplash.com/photos/random?client_id=f22f7bc55730453256d06fa7040f428c967949c51709546e252443beaca6a914&query=outdoors"
+  // baseURL: "https://api.unsplash.com/photos/random?client_id=f22f7bc55730453256d06fa7040f428c967949c51709546e252443beaca6a914&query=outdoors"
+  baseURL: "https://api.unsplash.com/photos/random?client_id=f22f7bc55730453256d06fa7040f428c967949c51709546e252443beaca6a914&query=spacex"
 })
 
 export default new Vuex.Store({
