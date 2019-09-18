@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import Axios from 'axios'
 import router from './router'
 import AuthService from './AuthService'
+import NotificationService from "./NotificationService"
 
 Vue.use(Vuex)
 
@@ -95,9 +96,11 @@ export default new Vuex.Store({
     },
     addBoard({ commit, dispatch }, boardData) {
       api.post('boards', boardData)
+
         .then(serverBoard => {
           dispatch('getBoards')
         })
+      NotificationService.toast("Board Created")
     },
     async deleteBoard({ commit, dispatch }, payload) {
       let res = await api.delete('boards/' + payload)
@@ -126,6 +129,7 @@ export default new Vuex.Store({
     async addList({ commit, dispatch }, payload) {
       try {
         let res = await api.post('lists', payload)
+        NotificationService.toast("List Created")
         dispatch('getLists', payload.boardId)
       } catch (error) {
 
@@ -142,6 +146,7 @@ export default new Vuex.Store({
     async addTask({ commit, dispatch }, payload) {
       try {
         let res = await api.post('tasks', payload)
+        NotificationService.toast("Task Created")
         dispatch('getTasks', payload.listId)
       } catch (error) {
 
@@ -158,6 +163,7 @@ export default new Vuex.Store({
     async addComment({ commit, dispatch }, payload) {
       try {
         let res = await api.post('comments', payload)
+        NotificationService.toast("Comment Created")
         dispatch('getComments', payload.taskId)
       } catch (error) {
 
