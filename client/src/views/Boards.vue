@@ -1,5 +1,5 @@
 <template>
-  <div class="boards">
+  <div class="boards" :style="{backgroundImage: `url(${backgroundPicture})`}">
     <h3>WELCOME TO THE BOARDS!!!</h3>
     <button class="btn btn-danger float-right logoutButton" @click="logout()">
       <i class="fas fa-power-off"></i>
@@ -22,6 +22,7 @@ export default {
   name: "boards",
   mounted() {
     this.$store.dispatch("getBoards");
+    this.$store.dispatch("getBackgroundImg");
   },
   data() {
     return {
@@ -34,6 +35,9 @@ export default {
   computed: {
     boards() {
       return this.$store.state.boards;
+    },
+    backgroundPicture() {
+      return this.$store.state.img;
     }
   },
   methods: {
@@ -59,5 +63,9 @@ export default {
 .logoutButton {
   margin-top: -40px;
   margin-right: 10px;
+}
+.boards {
+  background-size: cover;
+  min-height: 100vh;
 }
 </style>
