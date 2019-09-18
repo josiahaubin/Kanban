@@ -1,6 +1,6 @@
 <template>
-  <div class="boards">
-    <h3>WELCOME TO THE BOARDS!!!</h3>
+  <div class="boards" :style="{backgroundImage: `url(${backgroundPicture})`}">
+    <h1 class="title mx-auto">WELCOME TO THE BOARDS!!!</h1>
     <button class="btn btn-danger float-right logoutButton" @click="logout()">
       <i class="fas fa-power-off"></i>
     </button>
@@ -9,10 +9,11 @@
       <input type="text" placeholder="description" v-model="newBoard.description" />
       <button class="btn btn-success" type="submit">Create Board</button>
     </form>
-    <div v-for="board in boards" :key="board._id">
+    <div class="card mx-auto mt-2" v-for="board in boards" :key="board._id">
+      <i class="fas fa-times float-right red" @click="deleteBoard(board._id)"></i>
       <router-link :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}</router-link>
-      <i class="fas fa-times ml-2 red" @click="deleteBoard(board._id)"></i>
-      <p>{{board.description}}</p>
+
+      <!-- <p>{{board.description}}</p> -->
     </div>
   </div>
 </template>
@@ -22,6 +23,7 @@ export default {
   name: "boards",
   mounted() {
     this.$store.dispatch("getBoards");
+    this.$store.dispatch("getBackgroundImg");
   },
   data() {
     return {
@@ -34,6 +36,9 @@ export default {
   computed: {
     boards() {
       return this.$store.state.boards;
+    },
+    backgroundPicture() {
+      return this.$store.state.img;
     }
   },
   methods: {
@@ -76,5 +81,18 @@ export default {
 .logoutButton {
   margin-top: -40px;
   margin-right: 10px;
+}
+.boards {
+  background-size: cover;
+  min-height: 100vh;
+}
+.title {
+  background-color: rgba(255, 255, 255, 0.8);
+  width: fit-content;
+}
+.card {
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 50%;
+  padding: 15px;
 }
 </style>
