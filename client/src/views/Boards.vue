@@ -1,6 +1,9 @@
 <template>
   <div class="boards">
-    WELCOME TO THE BOARDS!!!
+    <h3>WELCOME TO THE BOARDS!!!</h3>
+    <button class="btn btn-danger float-right logoutButton" @click="logout()">
+      <i class="fas fa-power-off"></i>
+    </button>
     <form @submit.prevent="addBoard">
       <input type="text" placeholder="title" v-model="newBoard.title" required />
       <input type="text" placeholder="description" v-model="newBoard.description" />
@@ -8,7 +11,7 @@
     </form>
     <div v-for="board in boards" :key="board._id">
       <router-link :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}</router-link>
-      <i class="fas fa-times ml-2" @click="deleteBoard(board._id)"></i>
+      <i class="fas fa-times ml-2 red" @click="deleteBoard(board._id)"></i>
     </div>
   </div>
 </template>
@@ -39,14 +42,21 @@ export default {
     },
     deleteBoard(data) {
       this.$store.dispatch("deleteBoard", data);
+    },
+    logout() {
+      this.$store.dispatch("logout");
     }
   }
 };
 </script>
 
 <style scoped>
-i {
+.red {
   color: red;
   cursor: pointer;
+}
+.logoutButton {
+  margin-top: -40px;
+  margin-right: 10px;
 }
 </style>

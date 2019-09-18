@@ -37,7 +37,10 @@
         <option disabled>Select a List</option>
         <option v-for="list in lists" :key="list._id" :value="list._id">{{list.title}}</option>
       </select>
-      <button @click="changeList()">wat</button>
+      <button v-if="showInput" class="btn btn-warning ml-2 mb-1" @click="changeList()">
+        Move Task
+        <i class="fas fa-location-arrow"></i>
+      </button>
     </div>
   </drag>
 </template>

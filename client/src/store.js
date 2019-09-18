@@ -28,6 +28,9 @@ export default new Vuex.Store({
     setUser(state, user) {
       state.user = user
     },
+    resetState(state, user) {
+      state.user = {}
+    },
     setBoards(state, boards) {
       state.boards = boards
     },
