@@ -1,16 +1,19 @@
 <template>
-  <div class="board container-fluid">
-    <h1>{{board.title}}</h1>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="New List Title" v-model="query" />
-      <div class="input-group-append">
-        <button class="btn btn-primary" @click="addList()">
-          Add List
-          <i class="fas fa-check"></i>
-        </button>
+  <div class="board container">
+    <div class="row">
+      <div class="col-12 justify-content-center">
+        <h1>{{board.title}}</h1>
+        <div class="input-group mb-3 justify-content-center">
+          <input type="text" class="listBar" placeholder="New List Title" v-model="query" />
+          <div class="input-group-append">
+            <button class="btn btn-primary" @click="addList()">
+              Add List
+              <i class="fas fa-check"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-
     <div class="row">
       <List v-for="list in lists" :key="list._id" :listProp="list" />
     </div>
@@ -61,3 +64,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.listBar {
+  width: 40vw;
+}
+</style>

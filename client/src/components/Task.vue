@@ -5,7 +5,7 @@
         boardId: this.taskProp.boardId,
         oldListId: this.taskProp.listId }"
   >
-    <div class="task border rounded">
+    <div class="task border rounded mt-2">
       <div class="cp" @click="showInput = !showInput">
         <p>{{taskProp.description}}</p>
       </div>
@@ -14,8 +14,8 @@
       </ul>
 
       <div v-if="showInput" class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="New Comment" v-model="query" />
-        <div class="input-group-append">
+        <input type="text" class="form-control ml-3" placeholder="New Comment" v-model="query" />
+        <div class="input-group-append mr-3">
           <button class="btn btn-success mb-1" @click="addComment()">
             Add Comment
             <i class="fas fa-check"></i>
@@ -23,7 +23,7 @@
         </div>
       </div>
       <hr v-if="showInput" />
-      <button v-if="showInput" class="btn btn-danger mb-2" @click="deleteTask()">
+      <button v-if="showInput" class="btn btn-danger mb-3" @click="deleteTask()">
         Delete Task
         <i class="fas fa-trash"></i>
       </button>

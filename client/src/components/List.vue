@@ -1,17 +1,17 @@
 <template>
-  <drop @drop="changeList" class="list col-4 mt-2 border rounded">
+  <drop @drop="changeList" class="col-4 mt-2 shadow bg-white rounded card">
     <div>
-      <h2>
+      <h2 class="mt-2">
         {{listProp.title}}
-        <button class="btn btn-danger float-right mt-1" @click="deleteList()">
+        <button class="btn btn-danger float-right" @click="deleteList()">
           <i class="fas fa-trash"></i>
         </button>
       </h2>
       <Task v-for="task in tasks" :key="task._id" :taskProp="task" />
-      <div class="input-group mb-3">
+      <div class="input-group mb-3 mt-2">
         <input type="text" class="form-control" placeholder="New Task Description" v-model="query" />
         <div class="input-group-append">
-          <button class="btn btn-success mb-1" @click="addTask()">
+          <button class="btn btn-success" @click="addTask()">
             Add Task
             <i class="fas fa-check"></i>
           </button>
@@ -74,4 +74,6 @@ export default {
 
 
 <style scoped>
+.card {
+}
 </style>
