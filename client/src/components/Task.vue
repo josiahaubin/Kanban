@@ -70,9 +70,24 @@ export default {
       this.query = "";
     },
     deleteTask() {
-      this.$store.dispatch("deleteTask", {
-        taskId: this.taskProp._id,
-        listId: this.taskProp.listId
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this task!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(willDelete => {
+        if (willDelete) {
+          this.$store.dispatch("deleteTask", {
+            taskId: this.taskProp._id,
+            listId: this.taskProp.listId
+          });
+          swal("Poof! Your Task has been deleted!", {
+            icon: "success"
+          });
+        } else {
+          swal("Your task has not been deleted!");
+        }
       });
     }
   },
