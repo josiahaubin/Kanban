@@ -6,7 +6,7 @@
     <ul>
       <comment v-for="comment in comments" :commentProp="comment" :key="comment._id" />
     </ul>
-
+    <hr />
     <div v-if="showInput" class="input-group mb-3">
       <input type="text" class="form-control" placeholder="New Comment" v-model="query" />
       <div class="input-group-append">
@@ -16,6 +16,7 @@
         </button>
       </div>
     </div>
+    <hr v-if="showInput" />
     <button v-if="showInput" class="btn btn-danger mb-2" @click="deleteTask()">
       Delete Task
       <i class="fas fa-trash"></i>
