@@ -208,8 +208,13 @@ export default new Vuex.Store({
 
     //#region -- BACKGROUND IMG --
     async getBackgroundImg({ commit, dispatch }) {
-      let res = await imgApi.get('')
-      commit("setBackgroundImg", res.data.urls.full)
+      try {
+        let res = await imgApi.get('')
+        let img = await fetch(res.data.urls.full)
+        commit("setBackgroundImg", res.data.urls.full)
+      } catch (error) {
+        commit("setBackgroundImg", "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80")
+      }
     }
     //#endregion
   }
