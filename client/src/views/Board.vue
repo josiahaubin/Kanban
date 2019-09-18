@@ -2,8 +2,8 @@
   <div class="board container-fluid" :style="{backgroundImage: `url(${backgroundImg})`}">
     <div class="row">
       <div class="col-12 justify-content-center">
-        <h1>{{board.title}}</h1>
-        <div class="input-group mb-3 justify-content-center">
+        <h1 class="title mx-auto mt-2">{{board.title}}</h1>
+        <div class="input-group mb-3 mt-2 justify-content-center">
           <input type="text" class="listBar rounded" placeholder="New List Title" v-model="query" />
           <div class="input-group-append">
             <button class="btn btn-primary" @click="addList()">
@@ -76,5 +76,9 @@ export default {
 }
 .listBar {
   width: 40vw;
+}
+.title {
+  background-color: rgba(255, 255, 255, 0.8);
+  width: fit-content;
 }
 </style>
