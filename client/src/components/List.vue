@@ -1,5 +1,5 @@
 <template>
-  <drop class="list col-4 mt-2 border rounded">
+  <drop @drop="changeList" class="list col-4 mt-2 border rounded">
     <div>
       <h2>
         {{listProp.title}}
@@ -59,8 +59,13 @@ export default {
       });
       this.query = "";
     },
-    changeList() {
-      this.$store.dispatch("changeList", {});
+    changeList(obj) {
+      this.$store.dispatch("changeList", {
+        taskId: obj.taskId,
+        listId: this.listProp._id,
+        boardId: obj.boardId,
+        oldListId: obj.oldListId
+      });
     }
   },
   components: { Task, Drag, Drop }

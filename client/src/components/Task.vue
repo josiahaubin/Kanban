@@ -1,5 +1,10 @@
 <template>
-  <drag :transferData="{ }">
+  <drag
+    :transferData="{taskId: this.taskProp._id,
+        listId: this.selected,
+        boardId: this.taskProp.boardId,
+        oldListId: this.taskProp.listId }"
+  >
     <div class="task border rounded">
       <div class="cp" @click="showInput = !showInput">
         <p>{{taskProp.description}}</p>
@@ -16,11 +21,23 @@
             <i class="fas fa-check"></i>
           </button>
         </div>
+        <button v-if="showInput" class="btn btn-danger mb-2" @click="deleteTask()">
+          Delete Task
+          <i class="fas fa-trash"></i>
+        </button>
       </div>
+      <hr v-if="showInput" />
       <button v-if="showInput" class="btn btn-danger mb-2" @click="deleteTask()">
         Delete Task
         <i class="fas fa-trash"></i>
       </button>
+      <hr v-if="showInput" />
+      <p v-if="showInput">Move To:</p>
+      <select v-if="showInput" v-model="selected">
+        <option disabled>Select a List</option>
+        <option v-for="list in lists" :key="list._id" :value="list._id">{{list.title}}</option>
+      </select>
+      <button @click="changeList()">wat</button>
     </div>
   </drag>
 </template>
@@ -35,7 +52,8 @@ export default {
   data() {
     return {
       showInput: false,
-      query: ""
+      query: "",
+      selected: ""
     };
   },
   mounted() {
@@ -44,6 +62,9 @@ export default {
   computed: {
     comments() {
       return this.$store.state.comments[this.taskProp._id] || [];
+    },
+    lists() {
+      return this.$store.state.lists;
     }
   },
   methods: {

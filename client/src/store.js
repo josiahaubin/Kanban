@@ -166,6 +166,15 @@ export default new Vuex.Store({
       } catch (error) {
 
       }
+    },
+    async changeList({ commit, dispatch }, payload) {
+      try {
+        let res = await api.put('tasks/' + payload.taskId, payload)
+        dispatch('getTasks', payload.listId)
+        dispatch('getTasks', payload.oldListId)
+      } catch (error) {
+
+      }
     }
 
 
