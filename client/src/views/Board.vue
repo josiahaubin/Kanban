@@ -1,5 +1,5 @@
 <template>
-  <div class="board container-fluid">
+  <div class="board container-fluid" :style="{backgroundImage: `url(${backgroundImg})`}">
     <h1>{{board.title}}</h1>
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="New List Title" v-model="query" />
@@ -29,6 +29,7 @@ export default {
   mounted() {
     this.getLists();
     this.$store.dispatch("getBoards");
+    this.$store.dispatch("getBackgroundImg");
   },
   computed: {
     board() {
@@ -41,6 +42,9 @@ export default {
     },
     lists() {
       return this.$store.state.lists;
+    },
+    backgroundImg() {
+      return this.$store.state.img;
     }
   },
   methods: {
@@ -61,3 +65,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.board {
+  min-height: 100vh;
+  background-size: cover;
+}
+</style>

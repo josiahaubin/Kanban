@@ -15,6 +15,10 @@ let api = Axios.create({
   withCredentials: true
 })
 
+let imgApi = Axios.create({
+  baseURL: "https://api.unsplash.com/photos/random?client_id=f22f7bc55730453256d06fa7040f428c967949c51709546e252443beaca6a914&query=outdoors"
+})
+
 export default new Vuex.Store({
   state: {
     user: {},
@@ -22,7 +26,8 @@ export default new Vuex.Store({
     activeBoard: {},
     lists: [],
     tasks: {},
-    comments: {}
+    comments: {},
+    img: {}
   },
   mutations: {
     setUser(state, user) {
@@ -42,6 +47,9 @@ export default new Vuex.Store({
     },
     setComments(state, payload) {
       Vue.set(state.comments, payload.taskId, payload.data)
+    },
+    setBackgroundImg(state, payload) {
+      state.img = payload
     }
   },
   actions: {
@@ -178,9 +186,24 @@ export default new Vuex.Store({
       } catch (error) {
 
       }
+    },
+
+
+    //#endregion
+
+    //#region -- TASKS --
+
+    //#endregion
+
+    //#region -- COMMENTS --
+
+    //#endregion
+
+    //#region -- BACKGROUND IMG --
+    async getBackgroundImg({ commit, dispatch }) {
+      let res = await imgApi.get('')
+      commit("setBackgroundImg", res.data.urls.full)
     }
-
-
     //#endregion
   }
 })
