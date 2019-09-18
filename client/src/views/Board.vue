@@ -1,5 +1,5 @@
 <template>
-  <div class="board container" :style="{backgroundImage: `url(${backgroundImg})`}">
+  <div class="board container-fluid" :style="{backgroundImage: `url(${backgroundImg})`}">
     <div class="row">
       <div class="col-12 justify-content-center">
         <h1>{{board.title}}</h1>

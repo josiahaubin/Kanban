@@ -5,7 +5,7 @@
         boardId: this.taskProp.boardId,
         oldListId: this.taskProp.listId }"
   >
-    <div class="task border rounded mt-2">
+    <div class="task border rounded mt-2 bg-white">
       <div class="cp" @click="showInput = !showInput">
         <p>{{taskProp.description}}</p>
       </div>

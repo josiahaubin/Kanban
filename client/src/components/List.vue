@@ -1,5 +1,5 @@
 <template>
-  <drop @drop="changeList" class="col-4 mt-2 shadow bg-white rounded card">
+  <drop @drop="changeList" class="col-4 mt-2 shadow rounded card mx-auto">
     <div>
       <h2 class="mt-2">
         {{listProp.title}}
@@ -75,5 +75,6 @@ export default {
 
 <style scoped>
 .card {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 </style>
