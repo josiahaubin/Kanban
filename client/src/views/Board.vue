@@ -1,6 +1,9 @@
 <template>
   <div class="board container-fluid" :style="{backgroundImage: `url(${backgroundImg})`}">
     <div class="row">
+      <button class="btn" @click="returnHome()">
+        <i class="fas fa-arrow-left fa-2x"></i>
+      </button>
       <div class="col-12 justify-content-center">
         <h1 class="title mx-auto mt-2">{{board.title}}</h1>
         <div class="input-group mb-3 mt-2 justify-content-center">
@@ -60,6 +63,9 @@ export default {
         boardId: this.boardId
       });
       this.query = "";
+    },
+    returnHome() {
+      this.$router.push({ name: "boards" });
     }
   },
   props: ["boardId"],
