@@ -1,7 +1,7 @@
 <template>
   <div class="board container-fluid" :style="{backgroundImage: `url(${backgroundImg})`}">
     <div class="row">
-      <button class="btn" @click="returnHome()">
+      <button class="btn title" @click="returnHome()">
         <i class="fas fa-arrow-left fa-2x"></i>
       </button>
       <div class="col-12 justify-content-center">
