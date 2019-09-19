@@ -7,7 +7,7 @@
   >
     <div class="task border rounded mt-2 bg-white">
       <div class="cp" @click="showInput = !showInput">
-        <p>{{taskProp.description}}</p>
+        <p class="description">{{taskProp.description}}</p>
       </div>
       <ul>
         <comment v-for="comment in comments" :commentProp="comment" :key="comment._id" />
@@ -99,5 +99,10 @@ export default {
 <style scoped>
 .cp {
   cursor: pointer;
+}
+.description:hover {
+  color: green;
+  text-shadow: 1px 1px green;
+  letter-spacing: 3px;
 }
 </style>
