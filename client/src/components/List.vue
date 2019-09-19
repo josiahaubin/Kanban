@@ -1,7 +1,7 @@
 <template>
   <drop @drop="changeList" class="col-4 mt-2 shadow rounded card mx-auto">
     <div>
-      <h2 class="mt-2">
+      <h2 class="mt-2 cen">
         {{listProp.title}}
         <button class="btn btn-danger float-right" @click="deleteList()">
           <i class="fas fa-trash"></i>
@@ -79,5 +79,8 @@ export default {
 <style scoped>
 .card {
   background-color: rgba(255, 255, 255, 0.8);
+}
+.cen {
+  margin-left: 43px;
 }
 </style>
