@@ -181,11 +181,8 @@ export default new Vuex.Store({
     },
     async deleteComment({ commit, dispatch }, payload) {
       try {
-
-
         let res = await api.delete('comments/' + payload.commentId)
         dispatch('getComments', payload.taskId)
-
       } catch (error) {
 
       }
@@ -195,6 +192,9 @@ export default new Vuex.Store({
         let res = await api.put('tasks/' + payload.taskId, payload)
         dispatch('getTasks', payload.listId)
         dispatch('getTasks', payload.oldListId)
+        if (res && payload.listId != payload.oldListId) {
+          NotificationService.toast("Task Transfer Successful")
+        }
       } catch (error) {
 
       }
