@@ -80,9 +80,9 @@ export default class NotificationService {
             backdrop:
               `  
             rgba(0,0,0,0.6)
-            url("https://media.giphy.com/media/26tPskka6guetcHle/giphy.gif")    
+            url("https://media.giphy.com/media/cdNSp4L5vCU7aQrYnV/giphy.gif")    
             center 
-            no-repeat`,
+            `,
           })
           resolve(false)
         }
@@ -107,7 +107,7 @@ export default class NotificationService {
         type: 'warning',
         width: 600,
         padding: '3em',
-        background: '#fff url(/images/trees.png)',
+        background: '',
         backdrop: `
     rgba(0,0,0,0.6)
     url("https://media.giphy.com/media/3o7aTskHEUdgCQAXde/giphy.gif")
@@ -138,7 +138,7 @@ export default class NotificationService {
             text: 'You are still logged in',
             backdrop: `
     rgba(0,0,0,0.6)
-    url("https://media.giphy.com/media/eHK84S8vUNnY4/giphy.gif")
+    url("https://media.giphy.com/media/ZEU9ryYGZzttn0Cva7/giphy.gif")
     center
    
   `,
