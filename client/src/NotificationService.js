@@ -80,7 +80,7 @@ export default class NotificationService {
             backdrop:
               `  
             rgba(0,0,0,0.6)
-            url("https://media.giphy.com/media/cdNSp4L5vCU7aQrYnV/giphy.gif")    
+            url("https://media.giphy.com/media/CiTLZWskt7Fu/giphy.gif")    
             center 
             `,
           })
