@@ -5,15 +5,15 @@
       <h6>Login or Register to continue</h6>
       <br />
       <form v-if="loginForm" @submit.prevent="loginUser">
-        <input type="email" v-model="creds.email" placeholder="email" />
-        <input type="password" v-model="creds.password" placeholder="password" />
-        <button class="btn btn-success ml-1" type="submit">Login</button>
+        <input type="email" class="mr-3" v-model="creds.email" placeholder="email" />
+        <input type="password" class="mr-3" v-model="creds.password" placeholder="password" />
+        <button class="btn btn-success" type="submit">Login</button>
       </form>
       <form v-else @submit.prevent="register">
-        <input type="text" v-model="newUser.name" placeholder="name" />
-        <input type="email" v-model="newUser.email" placeholder="email" />
-        <input type="password" v-model="newUser.password" placeholder="password" />
-        <button class="btn btn-warning ml-1" type="submit">Create Account</button>
+        <input type="text" class="mr-3" v-model="newUser.name" placeholder="name" />
+        <input type="email" class="mr-3" v-model="newUser.email" placeholder="email" />
+        <input type="password" class="mr-3" v-model="newUser.password" placeholder="password" />
+        <button class="btn btn-warning" type="submit">Create Account</button>
       </form>
       <div class="action" @click="loginForm = !loginForm">
         <p v-if="loginForm">No account? Click here to Register</p>

@@ -5,9 +5,14 @@
       <i class="fas fa-power-off"></i>
     </button>
     <form @submit.prevent="addBoard">
-      <input type="text" placeholder="title" v-model="newBoard.title" required />
-      <input type="text" placeholder="description" v-model="newBoard.description" />
-      <button class="btn btn-success ml-1" type="submit">Create Board</button>
+      <input type="text" class="mr-3" placeholder="Board title" v-model="newBoard.title" required />
+      <input
+        type="text"
+        class="mr-3"
+        placeholder="Board description"
+        v-model="newBoard.description"
+      />
+      <button class="btn btn-success" type="submit">Create Board</button>
     </form>
     <div class="card mx-auto mt-2" v-for="board in boards" :key="board._id">
       <router-link :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}</router-link>
