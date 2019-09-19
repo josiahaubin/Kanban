@@ -33,7 +33,7 @@ export default class NotificationService {
     return new Promise((resolve, reject) => {
       const swalWithBootstrapButtons = swal.mixin({
         customClass: {
-          confirmButton: 'btn btn-success',
+          confirmButton: 'btn btn-success ml-5',
           cancelButton: 'btn btn-danger'
         },
         buttonsStyling: false
@@ -54,7 +54,8 @@ export default class NotificationService {
         showCancelButton: true,
         confirmButtonText: 'Yes, delete it!',
         cancelButtonText: 'No, cancel!',
-        reverseButtons: true
+        reverseButtons: true,
+
       }).then((result) => {
         if (result.value) {
           swalWithBootstrapButtons.fire(
@@ -84,7 +85,7 @@ export default class NotificationService {
     return new Promise((resolve, reject) => {
       const swalWithBootstrapButtons = swal.mixin({
         customClass: {
-          confirmButton: 'btn btn-success',
+          confirmButton: 'btn btn-success ml-5',
           cancelButton: 'btn btn-danger'
         },
         buttonsStyling: false
@@ -95,7 +96,7 @@ export default class NotificationService {
         type: 'warning',
         width: 600,
         padding: '3em',
-        background: '#fff url("https://media.giphy.com/media/3o7aTskHEUdgCQAXde/giphy.gif")',
+        background: '#fff url(/images/trees.png)',
         backdrop: `
     rgba(0,0,123,0.4)
     url("https://media.giphy.com/media/3o7aTskHEUdgCQAXde/giphy.gif")
@@ -105,7 +106,7 @@ export default class NotificationService {
         showCancelButton: true,
         confirmButtonText: 'Yes, Logout!',
         cancelButtonText: 'No, Stay here!',
-        reverseButtons: true
+        reverseButtons: true,
       }).then((result) => {
         if (result.value) {
           swalWithBootstrapButtons.fire(
