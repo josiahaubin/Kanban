@@ -47,6 +47,16 @@ export default class NotificationService {
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
         type: 'warning',
+        width: 600,
+        padding: '3em',
+        background: '#fff url(/images/trees.png)',
+        backdrop: `
+    rgba(0,0,123,0.4)
+    url("https://media.giphy.com/media/m2Q7FEc0bEr4I/giphy.gif")
+    center left
+    no-repeat
+  `
+        ,
         showCancelButton: true,
         confirmButtonText: 'Yes, delete it!',
         cancelButtonText: 'No, cancel!',
