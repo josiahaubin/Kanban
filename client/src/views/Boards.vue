@@ -54,8 +54,10 @@ export default {
       }
     },
 
-    logout() {
-      this.$store.dispatch("logout");
+    async logout() {
+      if (await NotificationService.confirmLogout()) {
+        this.$store.dispatch("logout");
+      }
     }
   }
 };

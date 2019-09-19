@@ -1,4 +1,6 @@
 import Axios from 'axios'
+import NotificationService from "./NotificationService";
+
 let baseUrl = location.host.includes('localhost') ? '//localhost:3000/' : '/'
 
 let auth = Axios.create({
@@ -31,6 +33,7 @@ export default class AuthService {
     } catch (e) {
       throw new Error(`[logout failed] : ${!e.response ? 'No response from server' : e.response.data.error}`)
     }
+
   }
   static async Authenticate() {
     try {

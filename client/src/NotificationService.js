@@ -30,7 +30,6 @@ export default class NotificationService {
 
 
   static confirmDelete() {
-
     return new Promise((resolve, reject) => {
       const swalWithBootstrapButtons = swal.mixin({
         customClass: {
@@ -39,10 +38,6 @@ export default class NotificationService {
         },
         buttonsStyling: false
       })
-
-
-
-
       swalWithBootstrapButtons.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -55,8 +50,7 @@ export default class NotificationService {
     url("https://media.giphy.com/media/m2Q7FEc0bEr4I/giphy.gif")
     center left
     no-repeat
-  `
-        ,
+  `,
         showCancelButton: true,
         confirmButtonText: 'Yes, delete it!',
         cancelButtonText: 'No, cancel!',
@@ -67,7 +61,6 @@ export default class NotificationService {
             'Deleted!',
             'Your file has been deleted.',
             'success'
-
           )
           resolve(true)
         } else if (
@@ -87,6 +80,52 @@ export default class NotificationService {
 
   }
 
+  static confirmLogout() {
+    return new Promise((resolve, reject) => {
+      const swalWithBootstrapButtons = swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+      swalWithBootstrapButtons.fire({
+        title: 'Are you sure you want to log out?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        width: 600,
+        padding: '3em',
+        background: '#fff url("https://media.giphy.com/media/3o7aTskHEUdgCQAXde/giphy.gif")',
+        backdrop: `
+    rgba(0,0,123,0.4)
+    url("https://media.giphy.com/media/3o7aTskHEUdgCQAXde/giphy.gif")
+    center left
+    no-repeat
+  `,
+        showCancelButton: true,
+        confirmButtonText: 'Yes, Logout!',
+        cancelButtonText: 'No, Stay here!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          swalWithBootstrapButtons.fire(
+            'You have been logged out.',
+          )
+          resolve(true)
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Cancelled',
+            'You are still logged in',
+          )
+          resolve(false)
+        }
+        resolve(false)
+      })
+    })
+  }
   // static confirmDelete(Boolean) {
   //   swal({
   //     title: "Are you sure?",
