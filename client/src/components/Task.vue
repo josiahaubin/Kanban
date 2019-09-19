@@ -91,6 +91,6 @@ export default {
 .description:hover {
   color: green;
   text-shadow: 1px 1px green;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
 }
 </style>
