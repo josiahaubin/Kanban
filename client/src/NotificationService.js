@@ -103,7 +103,7 @@ export default class NotificationService {
       })
       swalWithBootstrapButtons.fire({
         title: 'Are you sure you want to log out?',
-        text: "You won't be able to revert this!",
+        text: "You will have to log back in to view your boards!",
         type: 'warning',
         width: 600,
         padding: '3em',
