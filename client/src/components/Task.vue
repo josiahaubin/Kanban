@@ -33,6 +33,7 @@
 
 
 <script>
+import NotificationService from "../NotificationService";
 import { Drag, Drop } from "vue-drag-drop";
 import comment from "../components/Comment";
 export default {
@@ -57,6 +58,14 @@ export default {
     }
   },
   methods: {
+    async deleteTask() {
+      if (await NotificationService.confirmDelete()) {
+        this.$store.dispatch("deleteTask", {
+          taskId: this.taskProp._id,
+          listId: this.taskProp.listId
+        });
+      }
+    },
     getComments() {
       this.$store.dispatch("getComments", this.taskProp._id);
     },
@@ -68,27 +77,6 @@ export default {
         listId: this.taskProp.listId
       });
       this.query = "";
-    },
-    deleteTask() {
-      swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this task!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true
-      }).then(willDelete => {
-        if (willDelete) {
-          this.$store.dispatch("deleteTask", {
-            taskId: this.taskProp._id,
-            listId: this.taskProp.listId
-          });
-          swal("Poof! Your Task has been deleted!", {
-            icon: "success"
-          });
-        } else {
-          swal("Your task has not been deleted!");
-        }
-      });
     }
   },
   components: { comment, Drag, Drop }

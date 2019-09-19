@@ -23,6 +23,7 @@
 
 
 <script>
+import NotificationService from "../NotificationService";
 import { Drag, Drop } from "vue-drag-drop";
 import Task from "../components/Task";
 export default {
@@ -45,26 +46,13 @@ export default {
     getTasks() {
       this.$store.dispatch("getTasks", this.listProp._id);
     },
-    deleteList() {
-      swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this list!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true
-      }).then(willDelete => {
-        if (willDelete) {
-          this.$store.dispatch("deleteList", {
-            listId: this.listProp._id,
-            boardId: this.listProp.boardId
-          });
-          swal("Poof! Your list has been deleted!", {
-            icon: "success"
-          });
-        } else {
-          swal("Your list has not been deleted!");
-        }
-      });
+    async deleteList() {
+      if (await NotificationService.confirmDelete()) {
+        this.$store.dispatch("deleteList", {
+          listId: this.listProp._id,
+          boardId: this.listProp.boardId
+        });
+      }
     },
     addTask() {
       this.$store.dispatch("addTask", {

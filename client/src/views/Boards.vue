@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import NotificationService from "../NotificationService";
+
 export default {
   name: "boards",
   mounted() {
@@ -46,24 +48,10 @@ export default {
       this.$store.dispatch("addBoard", this.newBoard);
       this.newBoard = { title: "", description: "" };
     },
-    deleteBoard(data) {
-      swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this board!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true
-      }).then(willDelete => {
-        if (willDelete) {
-          this.$store.dispatch("deleteBoard", data);
-
-          swal("Poof! Your board has been deleted!", {
-            icon: "success"
-          });
-        } else {
-          swal("Your board has not been deleted!");
-        }
-      });
+    async deleteBoard(data) {
+      if (await NotificationService.confirmDelete()) {
+        this.$store.dispatch("deleteBoard", data);
+      }
     },
 
     logout() {
