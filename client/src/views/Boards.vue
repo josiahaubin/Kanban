@@ -1,13 +1,13 @@
 <template>
   <div class="boards" :style="{backgroundImage: `url(${backgroundPicture})`}">
-    <h1 class="title mx-auto">WELCOME TO THE BOARDS!!!</h1>
+    <h1 class="title mx-auto">{{user.name}}, Welcome To Your Boards!</h1>
     <button class="btn btn-danger float-right logoutButton" @click="logout()">
       <i class="fas fa-power-off"></i>
     </button>
     <form @submit.prevent="addBoard">
       <input type="text" placeholder="title" v-model="newBoard.title" required />
       <input type="text" placeholder="description" v-model="newBoard.description" />
-      <button class="btn btn-success" type="submit">Create Board</button>
+      <button class="btn btn-success ml-1" type="submit">Create Board</button>
     </form>
     <div class="card mx-auto mt-2" v-for="board in boards" :key="board._id">
       <i class="fas fa-times float-right red" @click="deleteBoard(board._id)"></i>
@@ -41,6 +41,9 @@ export default {
     },
     backgroundPicture() {
       return this.$store.state.img;
+    },
+    user() {
+      return this.$store.state.user;
     }
   },
   methods: {
@@ -67,7 +70,7 @@ export default {
   cursor: pointer;
 }
 .logoutButton {
-  margin-top: -40px;
+  margin-top: -53px;
   margin-right: 10px;
 }
 .boards {
