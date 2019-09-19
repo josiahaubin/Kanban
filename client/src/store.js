@@ -70,6 +70,8 @@ export default new Vuex.Store({
         let user = await AuthService.Login(creds)
         commit('setUser', user)
         router.push({ name: "boards" })
+        NotificationService.toast("Login Successful")
+
       } catch (e) {
         console.warn(e.message)
       }
@@ -179,8 +181,11 @@ export default new Vuex.Store({
     },
     async deleteComment({ commit, dispatch }, payload) {
       try {
+
+
         let res = await api.delete('comments/' + payload.commentId)
         dispatch('getComments', payload.taskId)
+
       } catch (error) {
 
       }
