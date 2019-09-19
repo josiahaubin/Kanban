@@ -10,10 +10,11 @@
       <button class="btn btn-success ml-1" type="submit">Create Board</button>
     </form>
     <div class="card mx-auto mt-2" v-for="board in boards" :key="board._id">
-      <i class="fas fa-times float-right red" @click="deleteBoard(board._id)"></i>
       <router-link :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}</router-link>
-
-      <!-- <p>{{board.description}}</p> -->
+      <p>Description: {{board.description}}</p>
+      <button class="btn btn-danger deleteButton" @click="deleteBoard(board._id)">
+        <i class="fas fa-times"></i>
+      </button>
     </div>
   </div>
 </template>
@@ -67,9 +68,9 @@ export default {
 </script>
 
 <style scoped>
-.red {
-  color: red;
-  cursor: pointer;
+.deleteButton {
+  width: 7%;
+  margin: auto;
 }
 .logoutButton {
   margin-top: -53px;
@@ -87,5 +88,6 @@ export default {
   background-color: rgba(255, 255, 255, 0.8);
   width: 50%;
   padding: 15px;
+  font-size: 25px;
 }
 </style>
