@@ -33,8 +33,8 @@ export default class NotificationService {
     return new Promise((resolve, reject) => {
       const swalWithBootstrapButtons = swal.mixin({
         customClass: {
-          confirmButton: 'btn btn-success ml-5',
-          cancelButton: 'btn btn-danger'
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger mr-5',
         },
         buttonsStyling: false
       })
@@ -44,10 +44,10 @@ export default class NotificationService {
         type: 'warning',
         width: 600,
         padding: '3em',
-        background: '#fff url(/images/trees.png)',
+        background: '',
         backdrop: `
-    rgba(0,0,123,0.4)
-    url("https://media.giphy.com/media/m2Q7FEc0bEr4I/giphy.gif")
+    rgba(0,0,0,0.6)
+    url("")
     center left
     no-repeat
   `,
@@ -58,21 +58,32 @@ export default class NotificationService {
 
       }).then((result) => {
         if (result.value) {
-          swalWithBootstrapButtons.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          )
+          swalWithBootstrapButtons.fire({
+            title: 'Deleted!',
+            text: 'Your file has been deleted.',
+            type: 'error',
+            backdrop: `
+    rgba(0,0,0,0.6)
+    url("https://media.giphy.com/media/111ebonMs90YLu/giphy.gif")
+    center
+  `,
+          })
           resolve(true)
         } else if (
           /* Read more about handling dismissals below */
           result.dismiss === swal.DismissReason.cancel
         ) {
-          swalWithBootstrapButtons.fire(
-            'Cancelled',
-            'Your imaginary file is safe :)',
-            'error'
-          )
+          swalWithBootstrapButtons.fire({
+            title: 'Cancelled',
+            text: 'Your imaginary file is safe :)',
+            type: 'success',
+            backdrop:
+              `  
+            rgba(0,0,0,0.6)
+            url("https://media.giphy.com/media/26tPskka6guetcHle/giphy.gif")    
+            center 
+            no-repeat`,
+          })
           resolve(false)
         }
         resolve(false)
@@ -85,8 +96,8 @@ export default class NotificationService {
     return new Promise((resolve, reject) => {
       const swalWithBootstrapButtons = swal.mixin({
         customClass: {
-          confirmButton: 'btn btn-success ml-5',
-          cancelButton: 'btn btn-danger'
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger mr-5'
         },
         buttonsStyling: false
       })
@@ -98,10 +109,10 @@ export default class NotificationService {
         padding: '3em',
         background: '#fff url(/images/trees.png)',
         backdrop: `
-    rgba(0,0,123,0.4)
+    rgba(0,0,0,0.6)
     url("https://media.giphy.com/media/3o7aTskHEUdgCQAXde/giphy.gif")
     center left
-    no-repeat
+   
   `,
         showCancelButton: true,
         confirmButtonText: 'Yes, Logout!',
@@ -109,18 +120,29 @@ export default class NotificationService {
         reverseButtons: true,
       }).then((result) => {
         if (result.value) {
-          swalWithBootstrapButtons.fire(
-            'You have been logged out.',
-          )
+          swalWithBootstrapButtons.fire({
+            title: 'You have been logged out.',
+            backdrop: `
+    rgba(0,0,0,0.6)
+    url("https://media.giphy.com/media/33E7ZjlQEMgF6kbkhY/giphy.gif")
+    center
+  `,
+          })
           resolve(true)
         } else if (
           /* Read more about handling dismissals below */
           result.dismiss === swal.DismissReason.cancel
         ) {
-          swalWithBootstrapButtons.fire(
-            'Cancelled',
-            'You are still logged in',
-          )
+          swalWithBootstrapButtons.fire({
+            title: 'Cancelled',
+            text: 'You are still logged in',
+            backdrop: `
+    rgba(0,0,0,0.6)
+    url("https://media.giphy.com/media/eHK84S8vUNnY4/giphy.gif")
+    center
+   
+  `,
+          })
           resolve(false)
         }
         resolve(false)
