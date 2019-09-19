@@ -42,4 +42,7 @@ li {
   color: red;
   cursor: pointer;
 }
+.comment {
+  font-family: "Chilanka", cursive;
+}
 </style>

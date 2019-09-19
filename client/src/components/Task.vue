@@ -88,6 +88,9 @@ export default {
 .cp {
   cursor: pointer;
 }
+.task {
+  font-family: "Chilanka", cursive;
+}
 .description:hover {
   color: black;
   text-shadow: 1px 1px black;
