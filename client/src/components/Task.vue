@@ -89,8 +89,8 @@ export default {
   cursor: pointer;
 }
 .description:hover {
-  color: green;
-  text-shadow: 1px 1px green;
+  color: black;
+  text-shadow: 1px 1px black;
   letter-spacing: 1px;
 }
 </style>
