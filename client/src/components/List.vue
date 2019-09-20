@@ -1,5 +1,5 @@
 <template>
-  <drop @drop="changeList" class="col-4 mt-2 shadow rounded card mx-auto">
+  <drop @drop="changeList" class="col-12-sm col-4-lg mt-2 shadow rounded card mx-auto">
     <div>
       <h2 class="mt-2 cen">
         {{listProp.title}}
