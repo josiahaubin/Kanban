@@ -12,7 +12,7 @@
         <input
           type="text"
           class="form-control"
-          id="taskTitle"
+          :id="'taskTitle'+listProp._id"
           placeholder="New Task Description*"
           v-model="query"
           required
@@ -63,7 +63,11 @@ export default {
       }
     },
     addTask() {
-      if (!document.getElementById("taskTitle").checkValidity()) {
+      if (
+        !document
+          .getElementById("taskTitle" + this.listProp._id)
+          .checkValidity()
+      ) {
         this.taskTitleValid = false;
         NotificationService.toastError("");
         return;

@@ -15,7 +15,7 @@
 
       <div v-if="showInput" class="input-group mb-3">
         <input
-          id="commentTitle"
+          :id="'commentTitle'+ taskProp._id"
           type="text"
           class="form-control ml-3"
           placeholder="New Comment*"
@@ -78,7 +78,11 @@ export default {
       this.$store.dispatch("getComments", this.taskProp._id);
     },
     addComment() {
-      if (!document.getElementById("commentTitle").checkValidity()) {
+      if (
+        !document
+          .getElementById("commentTitle" + this.taskProp._id)
+          .checkValidity()
+      ) {
         this.commentTitleValid = false;
         NotificationService.toastError("");
         return;
