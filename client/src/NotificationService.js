@@ -26,6 +26,21 @@ export default class NotificationService {
     });
   }
 
+  static toastLoginError(error) {
+    if (error.isAxiosError) {
+      error.message = error.response.data
+    }
+    swal.fire({
+      title: "Please enter a valid email and password",
+      text: error.message,
+      type: "error",
+      timer: 8500,
+      showConfirmButton: false,
+      position: "top-right",
+      toast: true
+    });
+  }
+
 
 
   static confirmDelete() {

@@ -15,6 +15,7 @@ export default class AuthService {
       let res = await auth.post('login', creds)
       return res.data
     } catch (e) {
+      NotificationService.toastLoginError("")
       throw new Error(`[login failed] : ${!e.response ? 'No response from server' : e.response.data.error}`)
     }
   }
