@@ -22,7 +22,10 @@ export default class AuthService {
   static async Register(creds) {
     try {
       let res = await auth.post('register', creds)
-      return res.data
+      if (res) {
+        NotificationService.toast("Registration Complete")
+        return res.data
+      }
     } catch (e) {
       throw new Error(`[registration failed] : ${!e.response ? 'No response from server' : e.response.data.error}`)
     }
