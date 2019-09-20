@@ -4,11 +4,17 @@
     <button class="btn btn-danger float-right logoutButton" @click="logout()">
       <i class="fas fa-power-off"></i>
     </button>
-    <form @submit.prevent="addBoard">
-      <input type="text" class="mr-3" placeholder="Board title" v-model="newBoard.title" required />
+    <form @submit.prevent="addBoard" class="col-12-md">
       <input
         type="text"
-        class="mr-3"
+        class="mr-3 mb-1"
+        placeholder="Board title"
+        v-model="newBoard.title"
+        required
+      />
+      <input
+        type="text"
+        class="mr-3 mb-1"
         placeholder="Board description"
         v-model="newBoard.description"
       />
