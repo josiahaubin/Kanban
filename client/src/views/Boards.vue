@@ -17,6 +17,7 @@
         class="mr-3 mb-1"
         placeholder="Board description"
         v-model="newBoard.description"
+        required
       />
       <button class="btn btn-success" type="submit">Create Board</button>
     </form>
