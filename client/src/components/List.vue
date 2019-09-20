@@ -3,7 +3,7 @@
     <div>
       <h2 class="mt-2 cen">
         {{listProp.title}}
-        <button class="btn btn-danger float-right" @click="deleteList()">
+        <button class="btn btn-danger float-right mr-2" @click="deleteList()">
           <i class="fas fa-trash"></i>
         </button>
       </h2>
@@ -81,7 +81,7 @@ export default {
   background-color: rgba(255, 255, 255, 0.8);
 }
 .cen {
-  margin-left: 43px;
+  margin-left: 45px;
 }
 input {
   box-shadow: inset 0px 0px 1px 1px white;
