@@ -95,4 +95,7 @@ export default {
   padding: 15px;
   font-size: 25px;
 }
+input {
+  box-shadow: inset 0px 0px 1px 1px white;
+}
 </style>

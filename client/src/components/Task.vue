@@ -96,4 +96,7 @@ export default {
   text-shadow: 1px 1px black;
   letter-spacing: 1px;
 }
+input {
+  box-shadow: inset 0px 0px 1px 1px white;
+}
 </style>

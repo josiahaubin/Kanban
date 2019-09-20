@@ -87,4 +87,7 @@ export default {
   background-color: rgba(255, 255, 255, 0.8);
   width: fit-content;
 }
+input {
+  box-shadow: inset 0px 0px 1px 1px white;
+}
 </style>

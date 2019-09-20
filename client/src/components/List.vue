@@ -83,4 +83,7 @@ export default {
 .cen {
   margin-left: 43px;
 }
+input {
+  box-shadow: inset 0px 0px 1px 1px white;
+}
 </style>
