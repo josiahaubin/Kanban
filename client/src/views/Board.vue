@@ -1,10 +1,10 @@
 <template>
   <div class="board container-fluid" :style="{backgroundImage: `url(${backgroundImg})`}">
     <div class="row">
-      <button class="btn title" @click="returnHome()">
-        <i class="fas fa-arrow-left fa-2x"></i>
-      </button>
       <div class="col-12 justify-content-center">
+        <button class="btn title float-left mt-2" @click="returnHome()">
+          <i class="fas fa-arrow-left fa-2x"></i>
+        </button>
         <h1 class="title mx-auto mt-2">{{board.title}}</h1>
         <div class="input-group mb-3 mt-2 justify-content-center">
           <input type="text" class="listBar rounded" placeholder="New List Title" v-model="query" />
