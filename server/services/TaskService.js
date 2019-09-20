@@ -6,7 +6,7 @@ const ObjectId = Schema.Types.ObjectId
 let _commentService = new CommentService().repository
 
 const _model = new Schema({
-  description: { type: String },
+  description: { type: String, required: true },
   listId: { type: ObjectId, ref: 'List', required: true },
   authorId: { type: ObjectId, ref: 'List', required: true },
   boardId: { type: ObjectId, ref: 'Board', required: true }

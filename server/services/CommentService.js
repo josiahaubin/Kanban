@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 const ObjectId = Schema.Types.ObjectId
 
 const _model = new Schema({
-  content: { type: String },
+  content: { type: String, required: true },
   taskId: { type: ObjectId, ref: 'Task', required: true },
   authorId: { type: ObjectId, ref: 'User', required: true },
   boardId: { type: ObjectId, ref: "Board", required: true },
