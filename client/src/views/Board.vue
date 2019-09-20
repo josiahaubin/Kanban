@@ -6,8 +6,16 @@
           <i class="fas fa-arrow-left fa-2x"></i>
         </button>
         <h1 class="title mx-auto mt-2">{{board.title}}</h1>
+        <small v-if="!listTitleValid" class="text-danger">Please enter list title</small>
         <div class="input-group mb-3 mt-2 justify-content-center">
-          <input type="text" class="listBar rounded" placeholder="New List Title" v-model="query" />
+          <input
+            id="listTitle"
+            type="text"
+            class="listBar rounded"
+            placeholder="New List Title"
+            v-model="query"
+            required
+          />
           <div class="input-group-append">
             <button class="btn btn-primary" @click="addList()">
               Add List
@@ -29,7 +37,8 @@ export default {
   name: "board",
   data() {
     return {
-      query: ""
+      query: "",
+      listTitleValid: true
     };
   },
   mounted() {
@@ -58,6 +67,11 @@ export default {
       this.$store.dispatch("getLists", this.boardId);
     },
     addList() {
+      if (!document.getElementById("listTitle").checkValidity()) {
+        this.listTitleValid = false;
+        return;
+      }
+      this.listTitleValid = true;
       this.$store.dispatch("addList", {
         title: this.query,
         boardId: this.boardId
