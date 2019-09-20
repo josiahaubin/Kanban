@@ -74,7 +74,6 @@ export default {
 
 <style scoped>
 .deleteButton {
-  width: 7%;
   margin: auto;
 }
 .logoutButton {
