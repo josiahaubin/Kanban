@@ -14,7 +14,14 @@
       </ul>
 
       <div v-if="showInput" class="input-group mb-3">
-        <input type="text" class="form-control ml-3" placeholder="New Comment" v-model="query" />
+        <input
+          id="commentTitle"
+          type="text"
+          class="form-control ml-3"
+          placeholder="New Comment*"
+          v-model="query"
+          required
+        />
         <div class="input-group-append mr-3">
           <button class="btn btn-success mb-1" @click="addComment()">
             Add Comment
@@ -43,7 +50,8 @@ export default {
     return {
       showInput: false,
       query: "",
-      selected: ""
+      selected: "",
+      commentTitleValid: true
     };
   },
   mounted() {
@@ -70,6 +78,12 @@ export default {
       this.$store.dispatch("getComments", this.taskProp._id);
     },
     addComment() {
+      if (!document.getElementById("commentTitle").checkValidity()) {
+        this.commentTitleValid = false;
+        NotificationService.toastError("");
+        return;
+      }
+      this.commentTitleValid = true;
       this.$store.dispatch("addComment", {
         content: this.query,
         taskId: this.taskProp._id,

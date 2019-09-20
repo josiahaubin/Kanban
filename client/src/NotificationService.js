@@ -15,9 +15,8 @@ export default class NotificationService {
     if (error.isAxiosError) {
       error.message = error.response.data
     }
-
     swal.fire({
-      title: "A Notification",
+      title: "Fill in required field",
       text: error.message,
       type: "error",
       timer: 8500,

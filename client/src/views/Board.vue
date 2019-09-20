@@ -6,13 +6,12 @@
           <i class="fas fa-arrow-left fa-2x"></i>
         </button>
         <h1 class="title mx-auto mt-2">{{board.title}}</h1>
-        <small v-if="!listTitleValid" class="text-danger">Please enter list title</small>
         <div class="input-group mb-3 mt-2 justify-content-center">
           <input
             id="listTitle"
             type="text"
             class="listBar rounded"
-            placeholder="New List Title"
+            placeholder="New List Title*"
             v-model="query"
             required
           />
@@ -33,6 +32,7 @@
 
 <script>
 import List from "../components/List";
+import NotificationService from "../NotificationService";
 export default {
   name: "board",
   data() {
@@ -69,6 +69,7 @@ export default {
     addList() {
       if (!document.getElementById("listTitle").checkValidity()) {
         this.listTitleValid = false;
+        NotificationService.toastError("");
         return;
       }
       this.listTitleValid = true;

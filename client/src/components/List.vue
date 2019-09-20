@@ -9,7 +9,14 @@
       </h2>
       <Task v-for="task in tasks" :key="task._id" :taskProp="task" />
       <div class="input-group mb-3 mt-2">
-        <input type="text" class="form-control" placeholder="New Task Description" v-model="query" />
+        <input
+          type="text"
+          class="form-control"
+          id="taskTitle"
+          placeholder="New Task Description*"
+          v-model="query"
+          required
+        />
         <div class="input-group-append">
           <button class="btn btn-success" @click="addTask()">
             Add Task
@@ -31,7 +38,8 @@ export default {
   props: ["listProp"],
   data() {
     return {
-      query: ""
+      query: "",
+      taskTitleValid: true
     };
   },
   mounted() {
@@ -55,6 +63,11 @@ export default {
       }
     },
     addTask() {
+      if (!document.getElementById("taskTitle").checkValidity()) {
+        this.taskTitleValid = false;
+        NotificationService.toastError("");
+        return;
+      }
       this.$store.dispatch("addTask", {
         description: this.query,
         listId: this.listProp._id,
